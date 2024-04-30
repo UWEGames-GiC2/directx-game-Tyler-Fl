@@ -105,13 +105,13 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(terrain2);
     m_ColliderObjects.push_back(terrain2);*/
 
-    Terrain* terrain3 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(0.0f, 0.0f, 0.0f), 0.0f, 0.0f, 0.0f, 0.2f * Vector3(0.2f, 0.4f, 0.2f));
+    Terrain* terrain3 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(0.0f, 0.0f, 0.0f), 0.0f, 0.0f, 0.0f, 0.2f * Vector3(0.05f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrain3);
     m_ColliderObjects.push_back(terrain3);
 
-    Terrain* terrain4 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(50.0f, 0.0f, .0f), 0.0f, 0.0f, 0.0f, 0.2f * Vector3(0.2f, 0.4f, 0.2f));
+    /*Terrain* terrain4 = new Terrain("Wall2", m_d3dDevice.Get(), m_fxFactory, Vector3(50.0f, 0.0f, .0f), 0.0f, 0.0f, 0.0f, 0.2f * Vector3(0.2f, 0.4f, 0.2f));
     m_GameObjects.push_back(terrain4);
-    m_ColliderObjects.push_back(terrain4);
+    m_ColliderObjects.push_back(terrain4);*/
 
     //L-system like tree
     /*Tree* tree = new Tree(4, 4, .6f, 10.0f * Vector3::Up, XM_PI / 6.0f, "JEMINA vase -up", m_d3dDevice.Get(), m_fxFactory);
@@ -119,26 +119,26 @@ void Game::Initialize(HWND _window, int _width, int _height)
     // todo: add to cmogo
 
     //Vertex Buffer Game Objects
-    //FileVBGO* terrainBox = new FileVBGO("terrainTex", m_d3dDevice.Get());
-    //m_GameObjects.push_back(terrainBox);
+    /*FileVBGO* terrainBox = new FileVBGO("terrainTex", m_d3dDevice.Get());
+    m_GameObjects.push_back(terrainBox);*/
 
-    //FileVBGO* Box = new FileVBGO("cube", m_d3dDevice.Get());
-    //m_GameObjects.push_back(Box);
-    //Box->SetPos(Vector3(0.0f, 0.0f, -100.0f));
-    //Box->SetPitch(XM_PIDIV4);
-    //Box->SetScale(20.0f);
+   /* FileVBGO* Box = new FileVBGO("cube", m_d3dDevice.Get());
+    m_GameObjects.push_back(Box);
+    Box->SetPos(Vector3(0.0f, 0.0f, -100.0f));
+    Box->SetPitch(XM_PIDIV4);
+    Box->SetScale(20.0f);*/
 
-    //VBCube* cube = new VBCube();
-    //cube->init(11, m_d3dDevice.Get());
-    //cube->SetPos(Vector3(100.0f, 0.0f, 0.0f));
-    //cube->SetScale(4.0f);
-    //m_GameObjects.push_back(cube);
+    /*VBCube* cube = new VBCube();
+    cube->init(11, m_d3dDevice.Get());
+    cube->SetPos(Vector3(100.0f, 0.0f, 0.0f));
+    cube->SetScale(4.0f);
+    m_GameObjects.push_back(cube);*/
 
-    //VBSpike* spikes = new VBSpike();
-    //spikes->init(11, m_d3dDevice.Get());
-    //spikes->SetPos(Vector3(0.0f, 0.0f, 100.0f));
-    //spikes->SetScale(4.0f);
-    //m_GameObjects.push_back(spikes);
+    /*VBSpike* spikes = new VBSpike();
+    spikes->init(11, m_d3dDevice.Get());
+    spikes->SetPos(Vector3(0.0f, 0.0f, 100.0f));
+    spikes->SetScale(4.0f);
+    m_GameObjects.push_back(spikes);*/
 
     //VBSpiral* spiral = new VBSpiral();
     //spiral->init(11, m_d3dDevice.Get());
@@ -251,8 +251,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //m_GameObjects2D.push_back(text);
 
     ////Test Sounds
-    Loop* loop = new Loop(m_audioEngine.get(), "9convert_f28qQKC");
-    loop->SetVolume(0.1f);
+    Loop* loop = new Loop(m_audioEngine.get(), "cinema-rhythms-driver-01-120839");
+    loop->SetVolume(0.5f);
     loop->Play();
     m_Sounds.push_back(loop);
 

@@ -149,7 +149,6 @@
     <Text Include="terrainTex.txt" />
   </ItemGroup>
   <ItemGroup>
-    <MeshContentTask Include="..\..\Wall.fbx" />
     <MeshContentTask Include="Bird\BirdModelV1.fbx" />
     <MeshContentTask Include="Table\table.FBX">
       <FileType>Document</FileType>
@@ -157,6 +156,7 @@
     <MeshContentTask Include="Vase\JEMINA vase -up.fbx">
       <FileType>Document</FileType>
     </MeshContentTask>
+    <MeshContentTask Include="wall.fbx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

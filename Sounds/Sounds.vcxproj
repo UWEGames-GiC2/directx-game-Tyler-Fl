@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Media Include="..\..\9convert_f28qQKC.wav" />
+    <Media Include="cinema-rhythms-driver-01-120839.wav" />
     <Media Include="Explo1.wav" />
     <Media Include="NightAmbienceSimple_02.wav" />
   </ItemGroup>
