@@ -268,8 +268,19 @@ void Game::Tick()
     {
         Update(m_timer);
     });
-
-    Render();
+    
+    switch (currentState)
+    {
+    case 0:
+        RenderMenu();
+        break;
+    case 1:
+        RenderGame();
+        break;
+    case 2:
+        RenderEnd();
+        break;
+    }
 }
 
 // Updates the world.
@@ -309,6 +320,10 @@ void Game::Update(DX::StepTimer const& _timer)
             m_GD->m_GS = GS_PLAY_MAIN_CAM;
         }
     }
+    if ((currentState == main) && (m_GD->m_KBS_tracker.pressed.Enter))
+    {      
+        currentState = play;       
+    }
 
     //update all objects
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
@@ -323,8 +338,33 @@ void Game::Update(DX::StepTimer const& _timer)
     CheckCollision();
 }
 
+void Game::RenderMenu()
+{
+    if (m_timer.GetFrameCount() == 0)
+    {
+        return;
+    }
+
+    Clear();
+
+    //set immediate context of the graphics device
+    m_DD->m_pd3dImmediateContext = m_d3dContext.Get();
+
+    //set which camera to be used
+    m_DD->m_cam = m_cam;
+    if (m_GD->m_GS == GS_PLAY_TPS_CAM)
+    {
+        m_DD->m_cam = m_TPScam;
+    }
+
+    //update the constant buffer for the rendering of VBGOs
+    VBGO::UpdateConstantBuffer(m_DD);
+
+    Present();
+}
+
 // Draws the scene.
-void Game::Render()
+void Game::RenderGame()
 {
     // Don't try to render anything before the first Update.
     if (m_timer.GetFrameCount() == 0)
@@ -364,6 +404,16 @@ void Game::Render()
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
 
+    Present();
+}
+
+void Game::RenderEnd()
+{
+    Present();
+}
+
+void Game::RenderRestart()
+{
     Present();
 }
 

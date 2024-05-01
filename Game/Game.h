@@ -60,7 +60,11 @@ public:
 private:
 
     void Update(DX::StepTimer const& _timer);
-    void Render();
+    void RenderGame();
+    void RenderMenu();
+    void RenderEnd();
+    void RenderRestart();
+
 
     void Clear();
     void Present();
@@ -69,6 +73,12 @@ private:
     void CreateResources();
 
     void OnDeviceLost();
+
+    enum gamestates { main = 0, play = 1, end = 0};
+
+    gamestates currentState = main;
+
+   
 
     // Device resources.
     HWND                                            m_window;
