@@ -177,7 +177,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_PhysicsObjects.push_back(pPlayer);
 
     //add a secondary camera
-    m_TPScam = new TPSCamera(0.25f * XM_PI, AR, 1.0f, 10000.0f, pPlayer, Vector3::UnitY, Vector3(0.0f, 10.0f, 50.0f));
+    m_TPScam = new TPSCamera(0.25f * XM_PI, AR, 1.0f, 10000.0f, pPlayer, Vector3::UnitY, Vector3(0.0f, 0.0f, 0.1f));
     m_GameObjects.push_back(m_TPScam);
 
     //test all GPGOs
@@ -239,21 +239,21 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_DD->m_light = m_light;
 
     //example basic 2D stuff
-    //ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
-    //logo->SetPos(200.0f * Vector2::One);
-    //m_GameObjects2D.push_back(logo);
-    //ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
-    //bug_test->SetPos(300.0f * Vector2::One);
-    //m_GameObjects2D.push_back(bug_test);
+    /*ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
+    logo->SetPos(200.0f * Vector2::One);
+    m_GameObjects2D.push_back(logo);
+    ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
+    bug_test->SetPos(300.0f * Vector2::One);
+    m_GameObjects2D.push_back(bug_test);*/
 
-    //TextGO2D* text = new TextGO2D("Test Text");
-    //text->SetPos(Vector2(100, 10));
-    //text->SetColour(Color((float*)&Colors::Yellow));
-    //m_GameObjects2D.push_back(text);
+    TextGO2D* text = new TextGO2D("Make it to the end!!!\n Press ENTER to start!");
+    text->SetPos(Vector2(100, 10));
+    text->SetColour(Color((float*)&Colors::Yellow));
+    m_GameObjects2D.push_back(text);
 
     ////Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "cinema-rhythms-driver-01-120839");
-    loop->SetVolume(0.5f);
+    loop->SetVolume(1.0f);
     loop->Play();
     m_Sounds.push_back(loop);
 
@@ -271,15 +271,15 @@ void Game::Tick()
     
     switch (currentState)
     {
-    case 0:
+        case Game::main:
         RenderMenu();
         break;
-    case 1:
+        case Game::play:
         RenderGame();
         break;
-    case 2:
-        RenderEnd();
-        break;
+        //case Game::end:
+        //RenderEnd();
+        //break;
     }
 }
 
@@ -357,6 +357,14 @@ void Game::RenderMenu()
         m_DD->m_cam = m_TPScam;
     }
 
+    // Draw sprite batch stuff 
+    m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
+    for (list<GameObject2D*>::iterator it = m_GameObjects2D.begin(); it != m_GameObjects2D.end(); it++)
+    {
+        (*it)->Draw(m_DD2D);
+    }
+    m_DD2D->m_Sprites->End();
+
     //update the constant buffer for the rendering of VBGOs
     VBGO::UpdateConstantBuffer(m_DD);
 
@@ -393,13 +401,7 @@ void Game::RenderGame()
         (*it)->Draw(m_DD);
     }
 
-    // Draw sprite batch stuff 
-    m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
-    for (list<GameObject2D*>::iterator it = m_GameObjects2D.begin(); it != m_GameObjects2D.end(); it++)
-    {
-        (*it)->Draw(m_DD2D);
-    }
-    m_DD2D->m_Sprites->End();
+    
 
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);

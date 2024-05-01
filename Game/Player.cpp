@@ -2,13 +2,14 @@
 #include "Player.h"
 #include <dinput.h>
 #include "GameData.h"
+#include <iostream>
 
 Player::Player(string _fileName, ID3D11Device* _pd3dDevice, IEffectFactory* _EF) : CMOGO(_fileName, _pd3dDevice, _EF)
 {
 	//any special set up for Player goes here
 	m_fudge = Matrix::CreateRotationY(XM_PI);
 
-	m_pos.y = 10.0f;
+	m_pos.y = 1.0f;
 
 	SetDrag(0.7);
 	SetPhysicsOn(true);
@@ -48,20 +49,32 @@ void Player::Tick(GameData* _GD)
 		{
 			m_acc -= forwardMove;
 		}
-		break;
-	}
-	}
 
-	//change orinetation of player
+		m_yaw -= _GD->m_dt * _GD->m_MS.x;
+		m_pitch -= _GD->m_dt * _GD->m_MS.y;
+		std::cout << m_yaw << std::endl;
+		//change orinetation of player
 	float rotSpeed = 2.0f * _GD->m_dt;
+	Vector3 sideMove = 40.0f * Vector3::Right;
+	//Matrix rotMove = Matrix::CreateRotationX(m_yaw);
+	sideMove = Vector3::Transform(sideMove, rotMove);
+
+	m_yaw -= _GD->m_dt * _GD->m_MS.x;
+	m_pitch -= _GD->m_dt * _GD->m_MS.y;
+	std::cout << m_yaw << std::endl;
+
 	if (_GD->m_KBS.A)
 	{
-		m_yaw += rotSpeed;
+		m_acc -= sideMove;
 	}
 	if (_GD->m_KBS.D)
 	{
-		m_yaw -= rotSpeed;
+		m_acc += sideMove;
 	}
+		break;
+	}
+
+
 
 	//move player up and down
 	if (_GD->m_KBS.R)
@@ -85,5 +98,6 @@ void Player::Tick(GameData* _GD)
 	}
 
 	//apply my base behaviour
+	}
 	CMOGO::Tick(_GD);
 }
