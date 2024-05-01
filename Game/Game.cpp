@@ -96,22 +96,23 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //find how big my window is to correctly calculate my aspect ratio
     float AR = (float)_width / (float)_height;
 
-    //example basic 3D stuff
-    /*Terrain* terrain = new Terrain("table", m_d3dDevice.Get(), m_fxFactory, Vector3(100.0f, 0.0f, 100.0f), 0.0f, 0.0f, 0.0f, 0.25f * Vector3::One);
-    m_GameObjects.push_back(terrain);
-    m_ColliderObjects.push_back(terrain);
+    //example basic 3D stuff     from original veiw   Vector ( Sideways, height, forward)
+    Terrain* terrainFW = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(50.0f, 20.0f, -50.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW);
+    m_ColliderObjects.push_back(terrainFW);
 
-    Terrain* terrain2 = new Terrain("table", m_d3dDevice.Get(), m_fxFactory, Vector3(-100.0f, 0.0f, -100.0f), 0.0f, 0.0f, 0.0f, Vector3::One);
-    m_GameObjects.push_back(terrain2);
-    m_ColliderObjects.push_back(terrain2);*/
+    Terrain* terrainFW2 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(-50.0f, 20.0f, -50.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW2);
+    m_ColliderObjects.push_back(terrainFW2);
 
-    Terrain* terrain3 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(0.0f, 0.0f, 0.0f), 0.0f, 0.0f, 0.0f, 0.2f * Vector3(0.05f, 0.05f, 0.05f));
-    m_GameObjects.push_back(terrain3);
-    m_ColliderObjects.push_back(terrain3);
+    /*Terrain* terrainFW3 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(-50.0f, 50.0f, -50.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW3);
+    m_ColliderObjects.push_back(terrainFW3);*/
 
-    /*Terrain* terrain4 = new Terrain("Wall2", m_d3dDevice.Get(), m_fxFactory, Vector3(50.0f, 0.0f, .0f), 0.0f, 0.0f, 0.0f, 0.2f * Vector3(0.2f, 0.4f, 0.2f));
-    m_GameObjects.push_back(terrain4);
-    m_ColliderObjects.push_back(terrain4);*/
+    /*Terrain* terrainSW = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(0.0f, 0.0f, 0.0f), 0.0f, 0.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainSW);
+    m_ColliderObjects.push_back(terrainSW);*/
+
 
     //L-system like tree
     /*Tree* tree = new Tree(4, 4, .6f, 10.0f * Vector3::Up, XM_PI / 6.0f, "JEMINA vase -up", m_d3dDevice.Get(), m_fxFactory);
