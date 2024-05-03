@@ -65,7 +65,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     //create GameData struct and populate its pointers
     m_GD = new GameData;
-    m_GD->m_GS = GS_PLAY_MAIN_CAM;
+    m_GD->m_GS = GS_PLAY_TPS_CAM;
 
     //set up systems for 2D rendering
     m_DD2D = new DrawData2D();
@@ -96,22 +96,57 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //find how big my window is to correctly calculate my aspect ratio
     float AR = (float)_width / (float)_height;
 
-    //example basic 3D stuff     from original veiw   Vector ( Sideways, height, forward)
-    Terrain* terrainFW = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(50.0f, 20.0f, -50.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
-    m_GameObjects.push_back(terrainFW);
-    m_ColliderObjects.push_back(terrainFW);
+    //example basic 3D stuff     from original veiw   Vector ( Sideways, height, forward) ( ) size (Width, height, depth)
 
-    Terrain* terrainFW2 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(-50.0f, 20.0f, -50.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    Terrain* terrainFW1 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(-5.0f, 20.0f, 76.0f), 0.0f, 600.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW1);
+    m_ColliderObjects.push_back(terrainFW1);
+
+    Terrain* terrainFW2 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(-50.0f, 20.0f, -52.0f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrainFW2);
     m_ColliderObjects.push_back(terrainFW2);
 
-    /*Terrain* terrainFW3 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(-50.0f, 50.0f, -50.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    Terrain* terrainFW3 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(-38.0f, 20.0f, -232.0f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrainFW3);
-    m_ColliderObjects.push_back(terrainFW3);*/
+    m_ColliderObjects.push_back(terrainFW3);
 
-    /*Terrain* terrainSW = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(0.0f, 0.0f, 0.0f), 0.0f, 0.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
-    m_GameObjects.push_back(terrainSW);
-    m_ColliderObjects.push_back(terrainSW);*/
+    Terrain* terrainFW4 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(20.0f, 20.0f, -283.0f), 0.0f, 1200.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW4);
+    m_ColliderObjects.push_back(terrainFW4);
+
+    Terrain* terrainFW5 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(200.0f, 20.0f, -267.0f), 0.0f, 1200.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW5);
+    m_ColliderObjects.push_back(terrainFW5);
+
+    Terrain* terrainFW6 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(332.0f, 30.0f, -383.0f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW6);
+    m_ColliderObjects.push_back(terrainFW6);
+
+
+
+
+
+
+    Terrain* terrainFW18 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(418.5f, 30.0f, -388.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW18);
+    m_ColliderObjects.push_back(terrainFW18);
+
+    Terrain* terrainFW19 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(414.5f, 20.0f, -208.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW19);
+    m_ColliderObjects.push_back(terrainFW19);
+
+    Terrain* terrainFW20 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(360.0f, 20.0f, -157.0f), 0.0f, 600.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW20);
+    m_ColliderObjects.push_back(terrainFW20);
+
+    Terrain* terrainFW21 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(180.0f, 20.0f, -165.0f), 0.0f, 600.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW21);
+    m_ColliderObjects.push_back(terrainFW21);
+
+    Terrain* terrainFW22 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(52.0f, 20.0f, -46.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW22);
+    m_ColliderObjects.push_back(terrainFW22);
+    
 
 
     //L-system like tree
@@ -309,7 +344,7 @@ void Game::Update(DX::StepTimer const& _timer)
     ReadInput();
     //upon space bar switch camera state
     //see docs here for what's going on: https://github.com/Microsoft/DirectXTK/wiki/Keyboard
-    if (m_GD->m_KBS_tracker.pressed.Space)
+   /* if (m_GD->m_KBS_tracker.pressed.Space)
     {
         if (m_GD->m_GS == GS_PLAY_MAIN_CAM)
         {
@@ -319,7 +354,7 @@ void Game::Update(DX::StepTimer const& _timer)
         {
             m_GD->m_GS = GS_PLAY_MAIN_CAM;
         }
-    }
+    }*/
     if ((currentState == main) && (m_GD->m_KBS_tracker.pressed.Enter))
     {      
         currentState = play;       
