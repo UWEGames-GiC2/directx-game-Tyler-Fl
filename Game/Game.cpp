@@ -194,9 +194,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(terrainFW24);
     m_ColliderObjects.push_back(terrainFW24);
 
-   /* Terrain* terrainFW25 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(190.0f, 70.0f, -500.0f), 300.0f, 300.0f, 0.0f, 0.25f * Vector3(0.25f, 0.22f, 0.05f));
+    Terrain* terrainFW25 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(190.0f, 70.0f, -500.0f), 300.0f, 300.0f, 0.0f, 0.25f * Vector3(0.25f, 0.22f, 0.05f));
     m_GameObjects.push_back(terrainFW25);
-    m_ColliderObjects.push_back(terrainFW25);*/
+    m_ColliderObjects.push_back(terrainFW25);
 
 
     //create a base camera
