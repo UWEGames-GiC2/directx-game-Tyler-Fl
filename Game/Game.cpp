@@ -404,30 +404,6 @@ void Game::Update(DX::StepTimer const& _timer)
     }
 
 
-    if (((currentState == main) && (gameWin == false) && (gameLose == false)))
-    {
-        TextGO2D* text = new TextGO2D("      Fly to the End!\n WASD to move \n Q to fly up \n E to fly down \nPress ENTER to start!");
-        text->SetPos(Vector2(200, 200));
-        text->SetColour(Color((float*)&Colors::Purple));
-        m_GameObjects2D.push_back(text);
-    }
-
-    if ((currentState == end) && (gameWin == true))
-    {
-        TextGO2D* text = new TextGO2D("      Congratulations!\n Press ENTER to restart \n Press ESCAPE to exit!");
-        text->SetPos(Vector2(200, 200));
-        text->SetColour(Color((float*)&Colors::Green));
-        m_GameObjects2D.push_back(text);
-    }
-
-    if ((currentState == end) && (gameLose == true))
-    {
-        TextGO2D* text = new TextGO2D("Better Luck next time!\n Press ENTER to restart \n Press ESCAPE to exit!");
-        text->SetPos(Vector2(200, 200));
-        text->SetColour(Color((float*)&Colors::Red));
-        m_GameObjects2D.push_back(text);
-    }
-
 
     ReadInput();
     //upon space bar switch camera state
@@ -455,6 +431,19 @@ void Game::Update(DX::StepTimer const& _timer)
     {
         (*it)->Tick(m_GD);
     }
+    for (list<GameObject2D*>::iterator it = m_Menu.begin(); it != m_Menu.end(); it++)
+    {
+        (*it)->Tick(m_GD);
+    }
+    for (list<GameObject2D*>::iterator it = m_Win.begin(); it != m_Win.end(); it++)
+    {
+        (*it)->Tick(m_GD);
+    }
+    for (list<GameObject2D*>::iterator it = m_Lose.begin(); it != m_Lose.end(); it++)
+    {
+        (*it)->Tick(m_GD);
+    }
+    
 
     CheckCollision();
 }
@@ -465,6 +454,14 @@ void Game::RenderMenu()
     if (m_timer.GetFrameCount() == 0)
     {
         return;
+    }
+
+    if (((currentState == main) && (gameWin == false) && (gameLose == false)))
+    {
+        TextGO2D* text = new TextGO2D("      Fly to the End!\n WASD to move \n Q to fly up \n E to fly down \nPress ENTER to start!");
+        text->SetPos(Vector2(200, 200));
+        text->SetColour(Color((float*)&Colors::Purple));
+        m_Menu.push_back(text);
     }
 
     Clear();
@@ -481,7 +478,7 @@ void Game::RenderMenu()
 
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
-    for (list<GameObject2D*>::iterator it = m_GameObjects2D.begin(); it != m_GameObjects2D.end(); it++)
+    for (list<GameObject2D*>::iterator it = m_Menu.begin(); it != m_Menu.end(); it++)
     {
         (*it)->Draw(m_DD2D);
     }
@@ -506,6 +503,7 @@ void Game::RenderGame()
     gameWin = false;
     gameLose = false;
 
+
     Clear();
     
     //set immediate context of the graphics device
@@ -526,8 +524,6 @@ void Game::RenderGame()
     {
         (*it)->Draw(m_DD);
     }
-
-    
 
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
@@ -557,7 +553,12 @@ void Game::RenderEnd()
 
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
-    for (list<GameObject2D*>::iterator it = m_GameObjects2D.begin(); it != m_GameObjects2D.end(); it++)
+    for (list<GameObject2D*>::iterator it = m_Win.begin(); it != m_Win.end(); it++)
+    {
+        (*it)->Draw(m_DD2D);
+    }
+
+    for (list<GameObject2D*>::iterator it = m_Lose.begin(); it != m_Lose.end(); it++)
     {
         (*it)->Draw(m_DD2D);
     }
@@ -565,6 +566,22 @@ void Game::RenderEnd()
 
     //update the constant buffer for the rendering of VBGOs
     VBGO::UpdateConstantBuffer(m_DD);
+
+    if ((currentState == end) && (gameWin == true))
+    {
+        TextGO2D* text2 = new TextGO2D("      Congratulations!\n Press ENTER to restart \n Press ESCAPE to exit!");
+        text2->SetPos(Vector2(200, 200));
+        text2->SetColour(Color((float*)&Colors::Green));
+        m_Win.push_back(text2);
+    }
+
+    /*if ((currentState == end) && (gameLose == true))
+    {
+        TextGO2D* text3 = new TextGO2D("Better Luck next time!\n Press ENTER to restart \n Press ESCAPE to exit!");
+        text3->SetPos(Vector2(200, 200));
+        text3->SetColour(Color((float*)&Colors::Red));
+        m_Lose.push_back(text3);
+    }*/
 
     Present();
 }

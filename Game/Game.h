@@ -121,6 +121,9 @@ private:
 
     list<GameObject*> m_GameObjects; //data structure to hold pointers to the 3D Game Objects
     list<GameObject2D*> m_GameObjects2D; //data structure to hold pointers to the 2D Game Objects 
+    list<GameObject2D*> m_Menu; //data structure to hold pointers to the 2D Game Objects  
+    list<GameObject2D*> m_Win; //data structure to hold pointers to the 2D Game Objects 
+    list<GameObject2D*> m_Lose; //data structure to hold pointers to the 2D Game Objects 
 
     //list<CMOGO*> m_CMOGameObjects; //data structure to hold pointers to all 3D CMO Game Objects
     //list<CMOGO*> m_PhysicsObjects
