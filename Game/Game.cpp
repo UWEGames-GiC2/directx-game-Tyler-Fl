@@ -324,10 +324,10 @@ void Game::RenderMenu()
         return;
     }
 
-    if (((currentState == main) && (gameWin == false) && (gameLose == false)))
+    if (currentState == main)
     {
-        TextGO2D* text = new TextGO2D("               Balance!\n Reach the end of the course\n   without hitting any walls! \n           WASD to move \n             Q to fly up \n           E to fly down \n      Press ENTER to start!");
-        text->SetPos(Vector2(150, 100));
+        TextGO2D* text = new TextGO2D("               Balance!\n Reach the end of the course\n   without hitting any walls! \n  Mouse to change direction\n           WASD to move \n             Q to fly up \n           E to fly down \n      Press ENTER to start!");
+        text->SetPos(Vector2(150, 50));
         text->SetColour(Color((float*)&Colors::Purple));
         m_Menu.push_back(text);
     }

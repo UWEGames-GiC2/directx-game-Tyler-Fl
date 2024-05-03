@@ -10,8 +10,6 @@ Player::Player(string _fileName, ID3D11Device* _pd3dDevice, IEffectFactory* _EF)
 	m_fudge = Matrix::CreateRotationY(XM_PI);
 
 	m_pos.y = 7.0f;
-	//m_pos.x = 150.0f;
-	//m_pos.z = -820.0f;
 
 	SetDrag(0.7);
 	SetPhysicsOn(true);
@@ -33,7 +31,6 @@ void Player::Tick(GameData* _GD)
 			//MOUSE CONTROL SCHEME HERE
 			float speed = 10.0f;
 			m_acc.x += speed * _GD->m_MS.x;
-			//m_acc.z += speed * _GD->m_MS.y;
 			break;
 		}
 	}
@@ -53,16 +50,16 @@ void Player::Tick(GameData* _GD)
 		}
 
 		m_yaw -= _GD->m_dt * _GD->m_MS.x;
-		//m_pitch -= _GD->m_dt * _GD->m_MS.y;
-		//std::cout << m_yaw << std::endl;
+		
+
 		//change orinetation of player
 	float rotSpeed = 2.0f * _GD->m_dt;
 	Vector3 sideMove = 40.0f * Vector3::Right;
-	//Matrix rotMove = Matrix::CreateRotationX(m_yaw);
+	
 	sideMove = Vector3::Transform(sideMove, rotMove);
 
 	m_yaw -= _GD->m_dt * _GD->m_MS.x;
-	//m_pitch -= _GD->m_dt * _GD->m_MS.y;
+
 	
 
 	if (_GD->m_KBS.A)
