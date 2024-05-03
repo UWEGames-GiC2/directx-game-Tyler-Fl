@@ -194,61 +194,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(terrainFW24);
     m_ColliderObjects.push_back(terrainFW24);
 
-    /*Terrain* terrainFW25 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(190.0f, 70.0f, -500.0f), 300.0f, 300.0f, 0.0f, 0.25f * Vector3(0.25f, 0.22f, 0.05f));
+   /* Terrain* terrainFW25 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(190.0f, 70.0f, -500.0f), 300.0f, 300.0f, 0.0f, 0.25f * Vector3(0.25f, 0.22f, 0.05f));
     m_GameObjects.push_back(terrainFW25);
     m_ColliderObjects.push_back(terrainFW25);*/
 
-    //L-system like tree
-    /*Tree* tree = new Tree(4, 4, .6f, 10.0f * Vector3::Up, XM_PI / 6.0f, "JEMINA vase -up", m_d3dDevice.Get(), m_fxFactory);
-    m_GameObjects.push_back(tree);*/
-    // todo: add to cmogo
-
-    //Vertex Buffer Game Objects
-    /*FileVBGO* terrainBox = new FileVBGO("terrainTex", m_d3dDevice.Get());
-    m_GameObjects.push_back(terrainBox);*/
-
-   /* FileVBGO* Box = new FileVBGO("cube", m_d3dDevice.Get());
-    m_GameObjects.push_back(Box);
-    Box->SetPos(Vector3(0.0f, 0.0f, -100.0f));
-    Box->SetPitch(XM_PIDIV4);
-    Box->SetScale(20.0f);*/
-
-    /*VBCube* cube = new VBCube();
-    cube->init(11, m_d3dDevice.Get());
-    cube->SetPos(Vector3(100.0f, 0.0f, 0.0f));
-    cube->SetScale(4.0f);
-    m_GameObjects.push_back(cube);*/
-
-    /*VBSpike* spikes = new VBSpike();
-    spikes->init(11, m_d3dDevice.Get());
-    spikes->SetPos(Vector3(0.0f, 0.0f, 100.0f));
-    spikes->SetScale(4.0f);
-    m_GameObjects.push_back(spikes);*/
-
-    //VBSpiral* spiral = new VBSpiral();
-    //spiral->init(11, m_d3dDevice.Get());
-    //spiral->SetPos(Vector3(-100.0f, 0.0f, 0.0f));
-    //spiral->SetScale(4.0f);
-    //m_GameObjects.push_back(spiral);
-
-    //VBPillow* pillow = new VBPillow();
-    //pillow->init(11, m_d3dDevice.Get());
-    //pillow->SetPos(Vector3(-100.0f, 0.0f, -100.0f));
-    //pillow->SetScale(4.0f);
-    //m_GameObjects.push_back(pillow);
-
-    //VBSnail* snail = new VBSnail(m_d3dDevice.Get(), "shell", 150, 0.98f, 0.09f * XM_PI, 0.4f, Color(1.0f, 0.0f, 0.0f, 1.0f), Color(0.0f, 0.0f, 1.0f, 1.0f));
-    //snail->SetPos(Vector3(-100.0f, 0.0f, 100.0f));
-    //snail->SetScale(2.0f);
-    //m_GameObjects.push_back(snail);
-
-    ////Marching Cubes
-    //VBMarchCubes* VBMC = new VBMarchCubes();
-    //VBMC->init(Vector3(-8.0f, -8.0f, -17.0f), Vector3(8.0f, 8.0f, 23.0f), 60.0f * Vector3::One, 0.01, m_d3dDevice.Get());
-    //VBMC->SetPos(Vector3(100, 0, -100));
-    //VBMC->SetPitch(-XM_PIDIV2);
-    //VBMC->SetScale(Vector3(3, 3, 1.5));
-    //m_GameObjects.push_back(VBMC);
 
     //create a base camera
     m_cam = new Camera(0.25f * XM_PI, AR, 1.0f, 10000.0f, Vector3::UnitY, Vector3::Zero);
@@ -264,57 +213,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_TPScam = new TPSCamera(0.25f * XM_PI, AR, 1.0f, 10000.0f, pPlayer, Vector3::UnitY, Vector3(0.0f, 0.0f, 0.1f));
     m_GameObjects.push_back(m_TPScam);
 
-    //test all GPGOs
-    /*float* params = new float[3];
-    params[0] = 10.f;  params[1] = 20.0f; params[2] = 30.f;
-    GPGO* pGPGO = new GPGO(m_d3dContext.Get(), GPGO_BOX, (float*)&Colors::Azure, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, -100.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = params[1] = 20.0f; params[2] = (size_t)32;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_CONE, (float*)&Colors::Navy,params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, -70.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = 15.0f;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_CUBE, (float*)&Colors::SeaGreen, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, -40.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = params[1] = 20.0f; params[2] = (size_t)32;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_CYLINDER, (float*)&Colors::OliveDrab, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, -10.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = 15.0f;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_DODECAHEDRON, (float*)&Colors::OrangeRed,params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, 20.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] =  15.0f; params[1] = (size_t)3;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_GEOSPHERE, (float*)&Colors::BlueViolet, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, 50.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = 20;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_ICOSAHEDRON, (float*)&Colors::DodgerBlue, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, 80.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = 20;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_OCTAHEDRON, (float*)&Colors::PaleTurquoise, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, 110.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = 15.0f; params[1] = (size_t)16;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_SPHERE, (float*)&Colors::LawnGreen, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, 140.0));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = 15.0f; params[1] = (size_t)8;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_TEAPOT, (float*)&Colors::YellowGreen, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, 170.0f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = 20;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_TETRAHEDRON, (float*)&Colors::Firebrick, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, 200.f));
-    m_GameObjects.push_back(pGPGO);
-    params[0] = 30.0f; params[1] = 10.0f; params[2] = (size_t)32;
-    pGPGO = new GPGO(m_d3dContext.Get(), GPGO_TORUS, (float*)&Colors::Aquamarine, params);
-    pGPGO->SetPos(Vector3(-50.0f, 10.0f, 230.f));
-    m_GameObjects.push_back(pGPGO);*/
-
     //create DrawData struct and populate its pointers
     m_DD = new DrawData;
     m_DD->m_pd3dImmediateContext = nullptr;
@@ -322,22 +220,12 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_DD->m_cam = m_cam;
     m_DD->m_light = m_light;
 
-    //example basic 2D stuff
-    /*ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
-    logo->SetPos(200.0f * Vector2::One);
-    m_GameObjects2D.push_back(logo);
-    ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
-    bug_test->SetPos(300.0f * Vector2::One);
-    m_GameObjects2D.push_back(bug_test);*/
-
     ////Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "cinema-rhythms-driver-01-120839");
     loop->SetVolume(1.0f);
     loop->Play();
     m_Sounds.push_back(loop);
 
-    //TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
-    //m_Sounds.push_back(TS);
 }
 
 // Executes the basic game loop.
@@ -389,7 +277,6 @@ void Game::Update(DX::StepTimer const& _timer)
     {
         currentState = end;
         gameWin = true;
-        pPlayer->SetPos(Vector3::Zero);
     }
 
     if ((currentState == main) && (m_GD->m_KBS_tracker.pressed.Enter))
@@ -403,24 +290,7 @@ void Game::Update(DX::StepTimer const& _timer)
         RenderRestart();
     }
 
-
-
-    ReadInput();
-    //upon space bar switch camera state
-    //see docs here for what's going on: https://github.com/Microsoft/DirectXTK/wiki/Keyboard
-   /* if (m_GD->m_KBS_tracker.pressed.Space)
-    {
-        if (m_GD->m_GS == GS_PLAY_MAIN_CAM)
-        {
-            m_GD->m_GS = GS_PLAY_TPS_CAM;
-        }
-        else
-        {
-            m_GD->m_GS = GS_PLAY_MAIN_CAM;
-        }
-    }*/
-
-    
+    ReadInput();  
 
     //update all objects
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
@@ -444,13 +314,11 @@ void Game::Update(DX::StepTimer const& _timer)
         (*it)->Tick(m_GD);
     }
     
-
     CheckCollision();
 }
 
 void Game::RenderMenu()
 {
-    //std::cout << "RenderMenu" << std::endl;
     if (m_timer.GetFrameCount() == 0)
     {
         return;
@@ -458,8 +326,8 @@ void Game::RenderMenu()
 
     if (((currentState == main) && (gameWin == false) && (gameLose == false)))
     {
-        TextGO2D* text = new TextGO2D("      Fly to the End!\n WASD to move \n Q to fly up \n E to fly down \nPress ENTER to start!");
-        text->SetPos(Vector2(200, 200));
+        TextGO2D* text = new TextGO2D("               Balance!\n Reach the end of the course\n   without hitting any walls! \n           WASD to move \n             Q to fly up \n           E to fly down \n      Press ENTER to start!");
+        text->SetPos(Vector2(150, 100));
         text->SetColour(Color((float*)&Colors::Purple));
         m_Menu.push_back(text);
     }
@@ -493,7 +361,6 @@ void Game::RenderMenu()
 // Draws the scene.
 void Game::RenderGame()
 {
-    //std::cout << "Render Game" << std::endl;
     // Don't try to render anything before the first Update.
     if (m_timer.GetFrameCount() == 0)
     {
@@ -502,7 +369,6 @@ void Game::RenderGame()
 
     gameWin = false;
     gameLose = false;
-
 
     Clear();
     
@@ -533,7 +399,6 @@ void Game::RenderGame()
 
 void Game::RenderEnd()
 {
-    //std::cout << "RenderEnd" << std::endl;
     if (m_timer.GetFrameCount() == 0)
     {
         return;
@@ -553,47 +418,55 @@ void Game::RenderEnd()
 
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
-    for (list<GameObject2D*>::iterator it = m_Win.begin(); it != m_Win.end(); it++)
+
+    if ((currentState == end) && (gameWin == true))
     {
-        (*it)->Draw(m_DD2D);
+        TextGO2D* text2 = new TextGO2D("     Congratulations!\n Press ENTER to restart! \n  Press ESCAPE to exit!");
+        text2->SetPos(Vector2(200, 200));
+        text2->SetColour(Color((float*)&Colors::Green));
+        m_Win.push_back(text2);
+
+        for (list<GameObject2D*>::iterator it = m_Win.begin(); it != m_Win.end(); it++)
+        {
+            (*it)->Draw(m_DD2D);
+        }
+
     }
 
-    for (list<GameObject2D*>::iterator it = m_Lose.begin(); it != m_Lose.end(); it++)
+    if (gameLose == true)
     {
-        (*it)->Draw(m_DD2D);
+        TextGO2D* text3 = new TextGO2D("Better Luck next time!\nPress ENTER to restart!\nPress ESCAPE to exit!");
+        text3->SetPos(Vector2(200, 200));
+        text3->SetColour(Color((float*)&Colors::Red));
+        m_Lose.push_back(text3);
+
+        for (list<GameObject2D*>::iterator it = m_Lose.begin(); it != m_Lose.end(); it++)
+        {
+            (*it)->Draw(m_DD2D);
+        }
     }
+
     m_DD2D->m_Sprites->End();
 
     //update the constant buffer for the rendering of VBGOs
     VBGO::UpdateConstantBuffer(m_DD);
 
-    if ((currentState == end) && (gameWin == true))
-    {
-        TextGO2D* text2 = new TextGO2D("      Congratulations!\n Press ENTER to restart \n Press ESCAPE to exit!");
-        text2->SetPos(Vector2(200, 200));
-        text2->SetColour(Color((float*)&Colors::Green));
-        m_Win.push_back(text2);
-    }
-
-    /*if ((currentState == end) && (gameLose == true))
-    {
-        TextGO2D* text3 = new TextGO2D("Better Luck next time!\n Press ENTER to restart \n Press ESCAPE to exit!");
-        text3->SetPos(Vector2(200, 200));
-        text3->SetColour(Color((float*)&Colors::Red));
-        m_Lose.push_back(text3);
-    }*/
+   
 
     Present();
 }
 
 void Game::RenderRestart()
 {
-    std::cout << "RenderRestart" << std::endl;
+    pPlayer->SetPos(Vector3::Zero);
     // Don't try to render anything before the first Update.
     if (m_timer.GetFrameCount() == 0)
     {
         return;
     }
+
+    gameWin = false;
+    gameLose = false;
 
     Clear();
 
@@ -903,6 +776,8 @@ void Game::CheckCollision()
             XMFLOAT3 eject_vect = Collision::ejectionCMOGO(*m_PhysicsObjects[i], *m_ColliderObjects[j]);
             auto pos = m_PhysicsObjects[i]->GetPos();
             m_PhysicsObjects[i]->SetPos(pos - eject_vect);
+            gameLose = true;
+            currentState = end;
         }
     }
 }
