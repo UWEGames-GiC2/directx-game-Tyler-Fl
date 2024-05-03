@@ -25,6 +25,7 @@ class Camera;
 class TPSCamera;
 class Light;
 class Sound;
+class Player;
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -76,8 +77,12 @@ private:
 
     enum gamestates { main = 0, play = 1, end = 2};
 
-    gamestates currentState = end;
+    gamestates currentState = main;
 
+    Player* pPlayer;
+
+    bool gameWin = false;
+    bool gameLose = false;
 
     // Device resources.
     HWND                                            m_window;

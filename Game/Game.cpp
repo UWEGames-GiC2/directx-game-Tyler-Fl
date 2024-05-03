@@ -190,7 +190,13 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(terrainFW23);
     m_ColliderObjects.push_back(terrainFW23);
     
+    Terrain* terrainFW24 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(190.0f, -30.0f, -500.0f), 300.0f, 300.0f, 0.0f, 0.25f * Vector3(0.25f, 0.22f, 0.05f));
+    m_GameObjects.push_back(terrainFW24);
+    m_ColliderObjects.push_back(terrainFW24);
 
+    /*Terrain* terrainFW25 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(190.0f, 70.0f, -500.0f), 300.0f, 300.0f, 0.0f, 0.25f * Vector3(0.25f, 0.22f, 0.05f));
+    m_GameObjects.push_back(terrainFW25);
+    m_ColliderObjects.push_back(terrainFW25);*/
 
     //L-system like tree
     /*Tree* tree = new Tree(4, 4, .6f, 10.0f * Vector3::Up, XM_PI / 6.0f, "JEMINA vase -up", m_d3dDevice.Get(), m_fxFactory);
@@ -250,7 +256,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(m_cam);
 
     //add Player
-    Player* pPlayer = new Player("Player", m_d3dDevice.Get(), m_fxFactory);
+    pPlayer = new Player("Player", m_d3dDevice.Get(), m_fxFactory);
     m_GameObjects.push_back(pPlayer);
     m_PhysicsObjects.push_back(pPlayer);
 
@@ -323,32 +329,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
     bug_test->SetPos(300.0f * Vector2::One);
     m_GameObjects2D.push_back(bug_test);*/
-    
-
-    if (currentState == main)
-    {
-        TextGO2D* text = new TextGO2D("      Fly to the End!\n Press ENTER to start!");
-        text->SetPos(Vector2(200, 200));
-        text->SetColour(Color((float*)&Colors::Purple));
-        m_GameObjects2D.push_back(text);
-    }
-    
-    if (currentState == end) //&& win condition
-    {
-        TextGO2D* text = new TextGO2D("      Congratulations!\n Press ENTER to restart \n Press ESCAPE to exit!");
-        text->SetPos(Vector2(200, 200));
-        text->SetColour(Color((float*)&Colors::Green));
-        m_GameObjects2D.push_back(text);
-    }
-
-    //if (currentState == end) //&& lose condition
-    //{
-    //    TextGO2D* text = new TextGO2D("Better Luck next time!\n Press ENTER to restart \n Press ESCAPE to exit!");
-    //    text->SetPos(Vector2(200, 200));
-    //    text->SetColour(Color((float*)&Colors::Red));
-    //    m_GameObjects2D.push_back(text);
-    //}
-   
 
     ////Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "cinema-rhythms-driver-01-120839");
@@ -405,6 +385,50 @@ void Game::Update(DX::StepTimer const& _timer)
         }
     }
 
+    if (pPlayer->GetPos().z <= -1000)
+    {
+        currentState = end;
+        gameWin = true;
+        pPlayer->SetPos(Vector3::Zero);
+    }
+
+    if ((currentState == main) && (m_GD->m_KBS_tracker.pressed.Enter))
+    {
+        currentState = play;
+    }
+
+    if ((currentState == end) && (m_GD->m_KBS_tracker.pressed.Enter))
+    {
+        currentState = play;
+        RenderRestart();
+    }
+
+
+    if (((currentState == main) && (gameWin == false) && (gameLose == false)))
+    {
+        TextGO2D* text = new TextGO2D("      Fly to the End!\n WASD to move \n Q to fly up \n E to fly down \nPress ENTER to start!");
+        text->SetPos(Vector2(200, 200));
+        text->SetColour(Color((float*)&Colors::Purple));
+        m_GameObjects2D.push_back(text);
+    }
+
+    if ((currentState == end) && (gameWin == true))
+    {
+        TextGO2D* text = new TextGO2D("      Congratulations!\n Press ENTER to restart \n Press ESCAPE to exit!");
+        text->SetPos(Vector2(200, 200));
+        text->SetColour(Color((float*)&Colors::Green));
+        m_GameObjects2D.push_back(text);
+    }
+
+    if ((currentState == end) && (gameLose == true))
+    {
+        TextGO2D* text = new TextGO2D("Better Luck next time!\n Press ENTER to restart \n Press ESCAPE to exit!");
+        text->SetPos(Vector2(200, 200));
+        text->SetColour(Color((float*)&Colors::Red));
+        m_GameObjects2D.push_back(text);
+    }
+
+
     ReadInput();
     //upon space bar switch camera state
     //see docs here for what's going on: https://github.com/Microsoft/DirectXTK/wiki/Keyboard
@@ -419,24 +443,6 @@ void Game::Update(DX::StepTimer const& _timer)
             m_GD->m_GS = GS_PLAY_MAIN_CAM;
         }
     }*/
-
-    if (m_TPScam->GetPos().z >= 1000)
-    {
-        std::cout << m_TPScam->GetPos().z << std::endl;
-        currentState = main;
-    }
-    
-    if ((currentState == main) && (m_GD->m_KBS_tracker.pressed.Enter))
-    {      
-        currentState = play;       
-    }
-
-    if ((currentState == end) && (m_GD->m_KBS_tracker.pressed.Enter))
-    {
-        RenderRestart();
-        currentState = play;
-    }
-    
 
     
 
@@ -455,6 +461,7 @@ void Game::Update(DX::StepTimer const& _timer)
 
 void Game::RenderMenu()
 {
+    //std::cout << "RenderMenu" << std::endl;
     if (m_timer.GetFrameCount() == 0)
     {
         return;
@@ -489,11 +496,15 @@ void Game::RenderMenu()
 // Draws the scene.
 void Game::RenderGame()
 {
+    //std::cout << "Render Game" << std::endl;
     // Don't try to render anything before the first Update.
     if (m_timer.GetFrameCount() == 0)
     {
         return;
     }
+
+    gameWin = false;
+    gameLose = false;
 
     Clear();
     
@@ -526,6 +537,7 @@ void Game::RenderGame()
 
 void Game::RenderEnd()
 {
+    //std::cout << "RenderEnd" << std::endl;
     if (m_timer.GetFrameCount() == 0)
     {
         return;
@@ -559,6 +571,7 @@ void Game::RenderEnd()
 
 void Game::RenderRestart()
 {
+    std::cout << "RenderRestart" << std::endl;
     // Don't try to render anything before the first Update.
     if (m_timer.GetFrameCount() == 0)
     {
