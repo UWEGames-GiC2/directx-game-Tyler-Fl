@@ -9,7 +9,9 @@ Player::Player(string _fileName, ID3D11Device* _pd3dDevice, IEffectFactory* _EF)
 	//any special set up for Player goes here
 	m_fudge = Matrix::CreateRotationY(XM_PI);
 
-	m_pos.y = 1.0f;
+	m_pos.y = 7.0f;
+	//m_pos.x = 150.0f;
+	//m_pos.z = -820.0f;
 
 	SetDrag(0.7);
 	SetPhysicsOn(true);
@@ -38,7 +40,7 @@ void Player::Tick(GameData* _GD)
 	case GS_PLAY_TPS_CAM:
 	{
 		//TURN AND FORWARD CONTROL HERE
-		Vector3 forwardMove = 40.0f * Vector3::Forward;
+		Vector3 forwardMove = 75.0f * Vector3::Forward;
 		Matrix rotMove = Matrix::CreateRotationY(m_yaw);
 		forwardMove = Vector3::Transform(forwardMove, rotMove);
 		if (_GD->m_KBS.W)
@@ -52,7 +54,7 @@ void Player::Tick(GameData* _GD)
 
 		m_yaw -= _GD->m_dt * _GD->m_MS.x;
 		//m_pitch -= _GD->m_dt * _GD->m_MS.y;
-		std::cout << m_yaw << std::endl;
+		//std::cout << m_yaw << std::endl;
 		//change orinetation of player
 	float rotSpeed = 2.0f * _GD->m_dt;
 	Vector3 sideMove = 40.0f * Vector3::Right;
@@ -61,7 +63,7 @@ void Player::Tick(GameData* _GD)
 
 	m_yaw -= _GD->m_dt * _GD->m_MS.x;
 	//m_pitch -= _GD->m_dt * _GD->m_MS.y;
-	std::cout << m_yaw << std::endl;
+	
 
 	if (_GD->m_KBS.A)
 	{

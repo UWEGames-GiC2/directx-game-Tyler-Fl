@@ -74,11 +74,10 @@ private:
 
     void OnDeviceLost();
 
-    enum gamestates { main = 0, play = 1, end = 0};
+    enum gamestates { main = 0, play = 1, end = 2};
 
-    gamestates currentState = main;
+    gamestates currentState = end;
 
-   
 
     // Device resources.
     HWND                                            m_window;

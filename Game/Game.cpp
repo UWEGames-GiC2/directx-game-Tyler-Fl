@@ -118,34 +118,77 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(terrainFW5);
     m_ColliderObjects.push_back(terrainFW5);
 
-    Terrain* terrainFW6 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(332.0f, 30.0f, -383.0f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    Terrain* terrainFW6 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(332.8f, 20.0f, -383.0f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrainFW6);
     m_ColliderObjects.push_back(terrainFW6);
 
+    Terrain* terrainFW7 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(216.4f, 20.0f, -515.5f), 0.0f, 600.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW7);
+    m_ColliderObjects.push_back(terrainFW7);
 
+    Terrain* terrainFW8 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(96.8f, 20.0f, -576.8f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW8);
+    m_ColliderObjects.push_back(terrainFW8);
 
+    Terrain* terrainFW9 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(104.1f, 20.0f, -687.0f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW9);
+    m_ColliderObjects.push_back(terrainFW9);
 
+    Terrain* terrainFW10 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(231.0f, 20.0f, -730.0f), 0.0f, 1200.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW10);
+    m_ColliderObjects.push_back(terrainFW10);
 
+    Terrain* terrainFW11 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(111.5f, 20.0f, -797.3f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW11);
+    m_ColliderObjects.push_back(terrainFW11);
 
-    Terrain* terrainFW18 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(418.5f, 30.0f, -388.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    Terrain* terrainFW12 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(123.5f, 20.0f, -977.5f), 0.0f, 900.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW12);
+    m_ColliderObjects.push_back(terrainFW12);
+
+    Terrain* terrainFW13 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(183.7f, 20.0f, -968.5f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW13);
+    m_ColliderObjects.push_back(terrainFW13);
+
+    Terrain* terrainFW14 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(305.0f, 20.0f, -830.0f), 0.0f, 1200.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW14);
+    m_ColliderObjects.push_back(terrainFW14);
+
+    Terrain* terrainFW15 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(427.3f, 20.0f, -789.6f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW15);
+    m_ColliderObjects.push_back(terrainFW15);
+
+    Terrain* terrainFW16 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(424.9f, 20.0f, -679.3f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW16);
+    m_ColliderObjects.push_back(terrainFW16);
+
+    Terrain* terrainFW17 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(300.5f, 20.0f, -633.0f), 0.0f, 1200.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW17);
+    m_ColliderObjects.push_back(terrainFW17);
+
+    Terrain* terrainFW18 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(422.5f, 20.0f, -568.8f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrainFW18);
     m_ColliderObjects.push_back(terrainFW18);
 
-    Terrain* terrainFW19 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(414.5f, 20.0f, -208.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    Terrain* terrainFW19 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(418.5f, 20.0f, -388.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrainFW19);
     m_ColliderObjects.push_back(terrainFW19);
 
-    Terrain* terrainFW20 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(360.0f, 20.0f, -157.0f), 0.0f, 600.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
+    Terrain* terrainFW20 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(414.5f, 20.0f, -208.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrainFW20);
     m_ColliderObjects.push_back(terrainFW20);
 
-    Terrain* terrainFW21 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(180.0f, 20.0f, -165.0f), 0.0f, 600.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    Terrain* terrainFW21 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(360.0f, 20.0f, -157.0f), 0.0f, 600.0f, 0.0f, 0.25f * Vector3(0.022f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrainFW21);
     m_ColliderObjects.push_back(terrainFW21);
 
-    Terrain* terrainFW22 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(52.0f, 20.0f, -46.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    Terrain* terrainFW22 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(180.0f, 20.0f, -165.0f), 0.0f, 600.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
     m_GameObjects.push_back(terrainFW22);
     m_ColliderObjects.push_back(terrainFW22);
+
+    Terrain* terrainFW23 = new Terrain("Wall", m_d3dDevice.Get(), m_fxFactory, Vector3(52.0f, 20.0f, -46.0f), 0.0f, 300.0f, 0.0f, 0.25f * Vector3(0.05f, 0.05f, 0.05f));
+    m_GameObjects.push_back(terrainFW23);
+    m_ColliderObjects.push_back(terrainFW23);
     
 
 
@@ -207,7 +250,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(m_cam);
 
     //add Player
-    Player* pPlayer = new Player("BirdModelV1", m_d3dDevice.Get(), m_fxFactory);
+    Player* pPlayer = new Player("Player", m_d3dDevice.Get(), m_fxFactory);
     m_GameObjects.push_back(pPlayer);
     m_PhysicsObjects.push_back(pPlayer);
 
@@ -280,11 +323,32 @@ void Game::Initialize(HWND _window, int _width, int _height)
     ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
     bug_test->SetPos(300.0f * Vector2::One);
     m_GameObjects2D.push_back(bug_test);*/
+    
 
-    TextGO2D* text = new TextGO2D("Make it to the end!!!\n Press ENTER to start!");
-    text->SetPos(Vector2(100, 10));
-    text->SetColour(Color((float*)&Colors::Yellow));
-    m_GameObjects2D.push_back(text);
+    if (currentState == main)
+    {
+        TextGO2D* text = new TextGO2D("      Fly to the End!\n Press ENTER to start!");
+        text->SetPos(Vector2(200, 200));
+        text->SetColour(Color((float*)&Colors::Purple));
+        m_GameObjects2D.push_back(text);
+    }
+    
+    if (currentState == end) //&& win condition
+    {
+        TextGO2D* text = new TextGO2D("      Congratulations!\n Press ENTER to restart \n Press ESCAPE to exit!");
+        text->SetPos(Vector2(200, 200));
+        text->SetColour(Color((float*)&Colors::Green));
+        m_GameObjects2D.push_back(text);
+    }
+
+    //if (currentState == end) //&& lose condition
+    //{
+    //    TextGO2D* text = new TextGO2D("Better Luck next time!\n Press ENTER to restart \n Press ESCAPE to exit!");
+    //    text->SetPos(Vector2(200, 200));
+    //    text->SetColour(Color((float*)&Colors::Red));
+    //    m_GameObjects2D.push_back(text);
+    //}
+   
 
     ////Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "cinema-rhythms-driver-01-120839");
@@ -312,9 +376,9 @@ void Game::Tick()
         case Game::play:
         RenderGame();
         break;
-        //case Game::end:
-        //RenderEnd();
-        //break;
+        case Game::end:
+        RenderEnd();
+        break;
     }
 }
 
@@ -355,10 +419,26 @@ void Game::Update(DX::StepTimer const& _timer)
             m_GD->m_GS = GS_PLAY_MAIN_CAM;
         }
     }*/
+
+    if (m_TPScam->GetPos().z >= 1000)
+    {
+        std::cout << m_TPScam->GetPos().z << std::endl;
+        currentState = main;
+    }
+    
     if ((currentState == main) && (m_GD->m_KBS_tracker.pressed.Enter))
     {      
         currentState = play;       
     }
+
+    if ((currentState == end) && (m_GD->m_KBS_tracker.pressed.Enter))
+    {
+        RenderRestart();
+        currentState = play;
+    }
+    
+
+    
 
     //update all objects
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
@@ -446,11 +526,69 @@ void Game::RenderGame()
 
 void Game::RenderEnd()
 {
+    if (m_timer.GetFrameCount() == 0)
+    {
+        return;
+    }
+
+    Clear();
+
+    //set immediate context of the graphics device
+    m_DD->m_pd3dImmediateContext = m_d3dContext.Get();
+
+    //set which camera to be used
+    m_DD->m_cam = m_cam;
+    if (m_GD->m_GS == GS_PLAY_TPS_CAM)
+    {
+        m_DD->m_cam = m_TPScam;
+    }
+
+    // Draw sprite batch stuff 
+    m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
+    for (list<GameObject2D*>::iterator it = m_GameObjects2D.begin(); it != m_GameObjects2D.end(); it++)
+    {
+        (*it)->Draw(m_DD2D);
+    }
+    m_DD2D->m_Sprites->End();
+
+    //update the constant buffer for the rendering of VBGOs
+    VBGO::UpdateConstantBuffer(m_DD);
+
     Present();
 }
 
 void Game::RenderRestart()
 {
+    // Don't try to render anything before the first Update.
+    if (m_timer.GetFrameCount() == 0)
+    {
+        return;
+    }
+
+    Clear();
+
+    //set immediate context of the graphics device
+    m_DD->m_pd3dImmediateContext = m_d3dContext.Get();
+
+    //set which camera to be used
+    m_DD->m_cam = m_cam;
+    if (m_GD->m_GS == GS_PLAY_TPS_CAM)
+    {
+        m_DD->m_cam = m_TPScam;
+    }
+
+    //update the constant buffer for the rendering of VBGOs
+    VBGO::UpdateConstantBuffer(m_DD);
+
+    //Draw 3D Game Obejects
+    for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
+    {
+        (*it)->Draw(m_DD);
+    }
+
+    //drawing text screws up the Depth Stencil State, this puts it back again!
+    m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
+
     Present();
 }
 
